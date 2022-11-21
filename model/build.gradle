@@ -1,0 +1,15 @@
+import com.chipman.buildsrc.*
+
+apply from: '../config.gradle'
+apply plugin: 'kotlin-parcelize'
+
+android {
+    namespace "com.chipman.model"
+}
+
+dependencies {
+
+    implementation(DependencyConfig.Kotlin.SerialJson)
+    implementation(DependencyConfig.Jetpack.Hilt)
+    kapt(DependencyConfig.Jetpack.HiltAPT)
+}

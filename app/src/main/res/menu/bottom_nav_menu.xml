@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_48"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_project"
+        android:icon="@drawable/ic_group_48"
+        android:title="@string/title_project" />
+
+    <item
+        android:id="@+id/navigation_navigator"
+        android:icon="@drawable/ic_navigation_48"
+        android:title="@string/title_navigator" />
+
+    <item
+        android:id="@+id/navigation_wx_group"
+        android:icon="@drawable/ic_library_books_48"
+        android:title="@string/title_wx_group" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_48"
+        android:title="@string/title_profile" />
+
+</menu>

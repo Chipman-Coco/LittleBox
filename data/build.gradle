@@ -1,0 +1,17 @@
+import com.chipman.buildsrc.*
+
+apply from: '../config.gradle'
+
+android {
+    namespace "com.chipman.data"
+}
+
+dependencies {
+    implementation(project(":common"))
+    api(project(":model"))
+
+    api(DependencyConfig.Jetpack.Paging3)
+
+    implementation(DependencyConfig.Jetpack.Hilt)
+    kapt(DependencyConfig.Jetpack.HiltAPT)
+}

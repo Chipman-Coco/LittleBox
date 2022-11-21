@@ -1,0 +1,15 @@
+import com.chipman.buildsrc.*
+
+apply from: '../config.gradle'
+
+android {
+    namespace "com.chipman.serve"
+}
+
+dependencies {
+    implementation(project(":common"))
+    implementation(project(":data"))
+
+    implementation(DependencyConfig.Jetpack.Hilt)
+    kapt(DependencyConfig.Jetpack.HiltAPT)
+}

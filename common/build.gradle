@@ -1,0 +1,46 @@
+import com.chipman.buildsrc.*
+
+apply from: '../config.gradle'
+
+android {
+    namespace "com.chipman.common"
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    api(DependencyConfig.Android.AppCompat)
+    api(DependencyConfig.Android.ConstraintLayout)
+    api(DependencyConfig.Android.ActivityKtx)
+    api(DependencyConfig.Android.FragmentKtx)
+    api(DependencyConfig.Android.Material)
+    api(DependencyConfig.Android.CoreKtx)
+
+    api(DependencyConfig.Kotlin.Kotlin)
+    api(DependencyConfig.Kotlin.CoroutinesCore)
+    api(DependencyConfig.Kotlin.CoroutinesAndroid)
+
+    api(DependencyConfig.Jetpack.ViewModel)
+    api(DependencyConfig.Jetpack.ViewModelSavedState)
+    api(DependencyConfig.Jetpack.LiveData)
+    api(DependencyConfig.Jetpack.Lifecycle)
+    api(DependencyConfig.Jetpack.Hilt)
+    kapt(DependencyConfig.Jetpack.HiltAPT)
+
+    api(DependencyConfig.Prevalent.Okhttp)
+    api(DependencyConfig.Prevalent.OkHttpInterceptorLogging)
+    api(DependencyConfig.Prevalent.Retrofit)
+    api(DependencyConfig.Prevalent.RetrofitConverterGson)
+    api(DependencyConfig.Prevalent.MMKV)
+
+    api(DependencyConfig.Github.Timber)
+    api(DependencyConfig.Github.ToastUtil)
+
+    testImplementation(DependencyConfig.Android.TestExtJunit)
+    androidTestImplementation(DependencyConfig.Android.Junit)
+    androidTestImplementation(DependencyConfig.Android.TestEspressoCore)
+}
