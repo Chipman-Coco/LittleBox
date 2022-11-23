@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingVertical="@dimen/dp_35">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录需要同意协议"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="为保障你的合法权益，请阅读并同意 吧吧全创服务协议 和 隐私政策" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_50">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_disagree"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:layout_weight="1"
+            android:text="不同意"
+            app:cornerRadius="@dimen/dp_30" />
+
+        <Space
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_50"
+            android:layout_weight="1"
+            android:text="同意"
+            app:cornerRadius="@dimen/dp_30" />
+    </LinearLayout>
+
+</LinearLayout>
+

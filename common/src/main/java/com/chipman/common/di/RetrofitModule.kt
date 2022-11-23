@@ -1,5 +1,6 @@
 package com.chipman.common.di
 
+import com.chipman.common.http.converter.GsonConverterFactory
 import com.chipman.common.http.interceptor.loggingInterceptor
 import dagger.Module
 import dagger.Provides
@@ -7,7 +8,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 

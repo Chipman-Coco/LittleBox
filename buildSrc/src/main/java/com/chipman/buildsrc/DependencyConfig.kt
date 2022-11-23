@@ -126,6 +126,8 @@ object DependencyConfig {
         const val DialogCore = "com.afollestad.material-dialogs:core:3.3.0"
         const val DialogBottomSheets = "com.afollestad.material-dialogs:bottomsheets:3.3.0"
 
+        const val Fresco = "com.facebook.fresco:fresco:2.6.0"                                               // 图片加载
+
         const val GSYPlayer = "com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-java:v8.3.3-release-jitpack"
         const val GSYExoPlayer = "com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer-exo2:v8.3.3-release-jitpack"
         const val GSYIjkArmv7a = "com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-armv7a:v8.3.3-release-jitpack"

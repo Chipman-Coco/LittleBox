@@ -18,10 +18,14 @@ class IntKeyPagingSource<S : BaseService, R : Any>(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, R> {
+        val page = params.key ?: pageStartNum
         return try {
-            val page = params.key ?: pageStartNum
             val response = load(service, page, params.loadSize)
-            LoadResult.Page(data = response, prevKey = null, nextKey = if (response.isEmpty()) null else page + 1)
+            LoadResult.Page(
+                data = response,
+                prevKey = if (page == pageStartNum) null else page - 1,
+                nextKey = if (response.isEmpty()) null else page + 1
+            )
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

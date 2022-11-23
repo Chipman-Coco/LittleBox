@@ -2,7 +2,6 @@ package com.chipman.common
 
 import android.app.Application
 import android.content.Context
-import androidx.viewbinding.BuildConfig
 import com.hjq.toast.ToastUtils
 import timber.log.Timber
 

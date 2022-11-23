@@ -6,11 +6,8 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.os.RemoteException
-import androidx.annotation.Nullable
 import com.chipman.serve.aidl.IBinderPool
-import com.chipman.serve.impl.MessageManagerImpl
 import timber.log.Timber
-import javax.inject.Inject
 
 class BinderPool private constructor() {
 
@@ -45,7 +42,7 @@ class BinderPool private constructor() {
 
     private val mServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            Timber.i("service connected...")
+            Timber.d("service connected...")
             service?.let {
                 mBinderPool = IBinderPool.Stub.asInterface(it) as IBinderPool
                 try {
@@ -65,7 +62,7 @@ class BinderPool private constructor() {
     }
 
     fun initBinderPool(context: Context) {
-        Timber.i("init binder pool...")
+        Timber.d("init binder pool...")
         mContext = context
         connectBinderPoolService()
     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BottomNavigation.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TabLayout.TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppSplash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <!--将顶部状态栏设置为透明，并将界面内容布局上边界上提至状态栏顶部-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--如果有底部虚拟导航栏，则将底部虚拟导航栏设置为透明，并将界面内容布局下边界下沉至虚拟导航栏底部-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--给window窗口设置背景图-->
+        <item name="android:windowBackground">@drawable/background_login</item>
+    </style>
+
+    <style name="WxSplash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 设置启动背景透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 设置启动不要Title -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

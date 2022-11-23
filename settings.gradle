@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "LittleBox"
-include ':app'
+include ':wanandroid'
 include ':common'
 include ':data'
 include ':model'
