@@ -3,7 +3,7 @@ package com.chipman.littlebox.ui.search
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.chipman.littlebox.BaseActivity
-import com.chipman.littlebox.databinding.ActivitySearchBinding
+import com.chipman.littlebox.wanandroid.databinding.ActivitySearchBinding
 
 class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
 

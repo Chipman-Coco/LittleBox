@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialogFragment
-import com.chipman.littlebox.R
+import com.chipman.littlebox.wanandroid.R
 
 class LoadingDialog : AppCompatDialogFragment() {
 

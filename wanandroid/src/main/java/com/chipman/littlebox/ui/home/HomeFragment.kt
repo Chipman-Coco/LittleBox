@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.chipman.littlebox.BaseFragment
-import com.chipman.littlebox.databinding.FragmentHomeBinding
 import com.chipman.littlebox.ui.search.SearchActivity
+import com.chipman.littlebox.wanandroid.databinding.FragmentHomeBinding
 import com.chipman.model.wanandroid.HomeTabBean
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

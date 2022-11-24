@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.chipman.littlebox.R
+import com.chipman.littlebox.wanandroid.R
 import timber.log.Timber
 
 class PagingLoadFooterAdapter(private val retry: () -> Unit) : LoadStateAdapter<PagingLoadFooterAdapter.FooterViewHolder>() {

@@ -5,12 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import com.chipman.littlebox.databinding.ActivityMainBinding
 import com.chipman.littlebox.ui.group.GroupFragment
 import com.chipman.littlebox.ui.home.HomeFragment
 import com.chipman.littlebox.ui.navigator.NavigatorFragment
 import com.chipman.littlebox.ui.profile.ProfileFragment
 import com.chipman.littlebox.ui.project.ProjectFragment
+import com.chipman.littlebox.wanandroid.R
+import com.chipman.littlebox.wanandroid.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

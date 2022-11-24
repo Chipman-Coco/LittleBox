@@ -6,11 +6,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
 
 android {
-    namespace "com.chipman.littlebox"
+    namespace "com.chipman.littlebox.wanandroid"
     compileSdk ProjectBuildConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId ProjectBuildConfig.applicationId
+        applicationId "com.chipman.littlebox.wanandroid"
         minSdk ProjectBuildConfig.minSdkVersion
         targetSdk ProjectBuildConfig.targetSdkVersion
         versionCode ProjectBuildConfig.versionCode

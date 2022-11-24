@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.chipman.domain.action.ArticleAction
-import com.chipman.littlebox.R
-import com.chipman.littlebox.databinding.ItemHomeArticleLayoutBinding
-import com.chipman.littlebox.databinding.ItemHomeBannerLayoutBinding
+import com.chipman.littlebox.wanandroid.R
+import com.chipman.littlebox.wanandroid.databinding.ItemHomeArticleLayoutBinding
+import com.chipman.littlebox.wanandroid.databinding.ItemHomeBannerLayoutBinding
 import com.chipman.model.wanandroid.*
 
 class UiModelAdapter(

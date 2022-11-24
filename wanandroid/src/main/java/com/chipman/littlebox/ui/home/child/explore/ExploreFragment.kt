@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chipman.domain.action.ArticleAction
 import com.chipman.littlebox.BaseFragment
 import com.chipman.littlebox.adapter.UiModelAdapter
-import com.chipman.littlebox.databinding.FragmentExploreBinding
 import com.chipman.littlebox.ktx.isRefreshing
 import com.chipman.littlebox.ui.home.HomeFragment
+import com.chipman.littlebox.wanandroid.databinding.FragmentExploreBinding
 import com.chipman.littlebox.widget.PagingLoadFooterAdapter
 import com.chipman.model.wanandroid.HomeTabBean
 import dagger.hilt.android.AndroidEntryPoint

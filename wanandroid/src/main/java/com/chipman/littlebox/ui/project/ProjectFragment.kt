@@ -3,7 +3,7 @@ package com.chipman.littlebox.ui.project
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.chipman.littlebox.BaseFragment
-import com.chipman.littlebox.databinding.FragmentProjectBinding
+import com.chipman.littlebox.wanandroid.databinding.FragmentProjectBinding
 
 class ProjectFragment : BaseFragment<FragmentProjectBinding, ProjectViewModel>() {
 

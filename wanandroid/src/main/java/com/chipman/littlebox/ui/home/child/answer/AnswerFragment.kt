@@ -3,7 +3,7 @@ package com.chipman.littlebox.ui.home.child.answer
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.chipman.littlebox.BaseFragment
-import com.chipman.littlebox.databinding.FragmentAnswerBinding
+import com.chipman.littlebox.wanandroid.databinding.FragmentAnswerBinding
 
 class AnswerFragment : BaseFragment<FragmentAnswerBinding, AnswerViewModel>() {
 

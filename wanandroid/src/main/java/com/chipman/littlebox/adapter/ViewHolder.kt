@@ -3,18 +3,15 @@ package com.chipman.littlebox.adapter
 import android.annotation.SuppressLint
 import android.text.Html
 import androidx.core.view.isVisible
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.chipman.common.util.GsonUtil
 import com.chipman.domain.action.ArticleAction
-import com.chipman.littlebox.R
-import com.chipman.littlebox.databinding.ItemHomeArticleLayoutBinding
-import com.chipman.littlebox.databinding.ItemHomeBannerLayoutBinding
+import com.chipman.littlebox.wanandroid.R
+import com.chipman.littlebox.wanandroid.databinding.ItemHomeArticleLayoutBinding
+import com.chipman.littlebox.wanandroid.databinding.ItemHomeBannerLayoutBinding
 import com.chipman.model.wanandroid.Article
-import com.chipman.model.wanandroid.Banners
 import com.chipman.model.wanandroid.UiModel
-import com.youth.banner.indicator.CircleIndicator
 import timber.log.Timber
 
 abstract class BaseItemViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -62,13 +59,14 @@ class BannerViewHolder(
     private val bannerAdapter = HomeBannerAdapter(emptyList()/*, onClick*/)
 
     override fun onBind(data: UiModel?) {
-        (data as? Banners)?.let { data ->
-            with(mBinding.banner) {
-                setAdapter(bannerAdapter)
-                indicator = CircleIndicator(context)
-                addBannerLifecycleObserver(findViewTreeLifecycleOwner())
-            }
-            bannerAdapter.setDatas(data.banners)
-        }
+        Timber.d("onBind: $data")
+//        (data as? Banners)?.let { data ->
+//            with(mBinding.banner) {
+//                setAdapter(bannerAdapter)
+//                indicator = CircleIndicator(context)
+//                addBannerLifecycleObserver(findViewTreeLifecycleOwner())
+//            }
+//            bannerAdapter.setDatas(data.banners)
+//        }
     }
 }

@@ -3,7 +3,7 @@ package com.chipman.littlebox.ui.home.child.square
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.chipman.littlebox.BaseFragment
-import com.chipman.littlebox.databinding.FragmentSquareBinding
+import com.chipman.littlebox.wanandroid.databinding.FragmentSquareBinding
 
 class SquareFragment : BaseFragment<FragmentSquareBinding, SquareViewModel>() {
 

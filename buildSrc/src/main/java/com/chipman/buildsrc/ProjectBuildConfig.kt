@@ -6,7 +6,6 @@ package com.chipman.buildsrc
 object ProjectBuildConfig {
 
     const val compileSdkVersion = 32
-    const val applicationId = "com.chipman.wanandroid"
     const val minSdkVersion = 21
     const val targetSdkVersion = 32
     const val versionCode = 100

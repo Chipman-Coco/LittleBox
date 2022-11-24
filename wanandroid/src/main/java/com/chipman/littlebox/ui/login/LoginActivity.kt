@@ -19,9 +19,9 @@ import com.chipman.common.ktx.filterBlankAndCarriageReturn
 import com.chipman.common.util.systemui.StatusBarUtil
 import com.chipman.littlebox.BaseActivity
 import com.chipman.littlebox.MainActivity
-import com.chipman.littlebox.R
-import com.chipman.littlebox.databinding.ActivityLoginBinding
 import com.chipman.littlebox.util.AppUtil
+import com.chipman.littlebox.wanandroid.R
+import com.chipman.littlebox.wanandroid.databinding.ActivityLoginBinding
 import com.chipman.littlebox.widget.LoadingDialog
 import com.jay.phone_text_watcher.PhoneTextWatcher
 import com.jay.phone_text_watcher.TextChangeCallback

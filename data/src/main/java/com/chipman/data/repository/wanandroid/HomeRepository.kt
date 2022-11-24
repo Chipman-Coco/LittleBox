@@ -8,6 +8,7 @@ import com.chipman.common.result.getOrNull
 import com.chipman.data.service.BaseService
 import com.chipman.data.service.wanandroid.HomeService
 import com.chipman.data.source.IntKeyPagingSource
+import com.chipman.model.wanandroid.Banners
 import kotlinx.coroutines.async
 import kotlinx.coroutines.supervisorScope
 import javax.inject.Inject
@@ -54,9 +55,9 @@ class HomeRepository @Inject constructor(
                     val tops = topsDeferred.await().getOrElse { emptyList() }
                     val banners = bannersDeferred.await().getOrElse { emptyList() }
                     with(ArrayList<Any>(1 + tops.size + articles.size)) {
-//                        if (banners.isNotEmpty()) {
-//                            add(Banners(banners))
-//                        }
+                        if (banners.isNotEmpty()) {
+                            add(Banners(banners))
+                        }
                         addAll(tops)
                         addAll(articles)
                         this
