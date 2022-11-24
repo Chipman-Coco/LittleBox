@@ -3,16 +3,17 @@ package com.chipman.littlebox.wanandroid.adapter
 import android.annotation.SuppressLint
 import android.text.Html
 import androidx.core.view.isVisible
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.chipman.common.util.GsonUtil
 import com.chipman.domain.action.ArticleAction
 import com.chipman.littlebox.wanandroid.R
 import com.chipman.littlebox.wanandroid.databinding.ItemHomeArticleLayoutBinding
 import com.chipman.littlebox.wanandroid.databinding.ItemHomeBannerLayoutBinding
 import com.chipman.model.wanandroid.Article
+import com.chipman.model.wanandroid.Banners
 import com.chipman.model.wanandroid.UiModel
-import timber.log.Timber
+import com.youth.banner.indicator.CircleIndicator
 
 abstract class BaseItemViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
     abstract fun onBind(data: UiModel?)
@@ -25,7 +26,6 @@ class ArticleViewHolder(
     @SuppressLint("SetTextI18n")
     override fun onBind(data: UiModel?) {
         (data as? Article)?.let { article ->
-            Timber.d("onBind: ${GsonUtil.toJson(article)}")
             mBinding.apply {
                 tvAuthor.text = article.getArticleAuthor()
                 tvIsTop.isVisible = article.type == 1
@@ -59,14 +59,13 @@ class BannerViewHolder(
     private val bannerAdapter = HomeBannerAdapter(emptyList()/*, onClick*/)
 
     override fun onBind(data: UiModel?) {
-        Timber.d("onBind: $data")
-//        (data as? Banners)?.let { data ->
-//            with(mBinding.banner) {
-//                setAdapter(bannerAdapter)
-//                indicator = CircleIndicator(context)
-//                addBannerLifecycleObserver(findViewTreeLifecycleOwner())
-//            }
-//            bannerAdapter.setDatas(data.banners)
-//        }
+        (data as? Banners)?.let { data ->
+            with(mBinding.banner) {
+                setAdapter(bannerAdapter)
+                indicator = CircleIndicator(context)
+                addBannerLifecycleObserver(findViewTreeLifecycleOwner())
+            }
+            bannerAdapter.setDatas(data.banners)
+        }
     }
 }

@@ -10,13 +10,14 @@ import com.chipman.littlebox.wanandroid.R
 import com.chipman.littlebox.wanandroid.databinding.ItemHomeArticleLayoutBinding
 import com.chipman.littlebox.wanandroid.databinding.ItemHomeBannerLayoutBinding
 import com.chipman.model.wanandroid.*
+import timber.log.Timber
 
 class UiModelAdapter(
     private val onClick: (ArticleAction) -> Unit
 ) : PagingDataAdapter<Any, BaseItemViewHolder>(UiModelComparator) {
 
     override fun getItemViewType(position: Int): Int {
-//        Timber.d("itemType: ${peek(position)}")
+        Timber.d("itemType: ${peek(position)?.javaClass}, position: $position")
         return when (peek(position)) {
             is Article -> R.layout.item_home_article_layout
             is Classify -> R.layout.item_home_article_layout
@@ -28,6 +29,7 @@ class UiModelAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseItemViewHolder, position: Int) {
+        Timber.d("onBindViewHolder position: $position")
         holder.onBind(getItem(position) as? UiModel)
     }
 
@@ -44,7 +46,7 @@ class UiModelAdapter(
                 )/*,
                 onClick*/
             )
-            else -> articleViewHolder
+            else -> throw Throwable("Unknown viewType")
         }
     }
 }
@@ -59,6 +61,7 @@ object UiModelComparator : DiffUtil.ItemCallback<Any>() {
             oldItem is Series && newItem is Series -> oldItem.id == newItem.id
             oldItem is Classify && newItem is Classify -> oldItem.id == newItem.id
             oldItem is Article && newItem is Article -> oldItem.id == newItem.id
+//            oldItem is Banners && newItem is Banners -> oldItem == newItem
             else -> oldItem.javaClass == newItem.javaClass
         }
     }
@@ -72,6 +75,7 @@ object UiModelComparator : DiffUtil.ItemCallback<Any>() {
         oldItem is Series && newItem is Series -> oldItem == newItem
         oldItem is Classify && newItem is Classify -> oldItem == newItem
         oldItem is Article && newItem is Article -> oldItem == newItem
+//        oldItem is Banners && newItem is Banners -> oldItem == newItem
         else -> oldItem.javaClass == newItem.javaClass && oldItem == newItem
     }
 }
