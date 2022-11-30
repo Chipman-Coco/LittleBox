@@ -1,14 +1,17 @@
 import com.chipman.buildsrc.*
 
 apply from: '../config.gradle'
-apply plugin: 'kotlin-parcelize'
 
 android {
-    namespace "com.chipman.model"
+    namespace "com.chipman.multitype"
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation(DependencyConfig.Kotlin.SerialJson)
+    implementation(DependencyConfig.Jetpack.Paging3)
     implementation(DependencyConfig.Jetpack.Hilt)
     kapt(DependencyConfig.Jetpack.HiltAPT)
 }

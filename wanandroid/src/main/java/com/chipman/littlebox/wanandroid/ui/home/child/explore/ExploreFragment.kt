@@ -12,21 +12,23 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chipman.domain.action.ArticleAction
 import com.chipman.littlebox.wanandroid.BaseFragment
-import com.chipman.littlebox.wanandroid.adapter.UiModelAdapter
 import com.chipman.littlebox.wanandroid.databinding.FragmentExploreBinding
 import com.chipman.littlebox.wanandroid.ktx.isRefreshing
+import com.chipman.littlebox.wanandroid.ui.ArticleDiffCalculator
+import com.chipman.littlebox.wanandroid.ui.SimpleFooterItemBinder
 import com.chipman.littlebox.wanandroid.ui.home.HomeFragment
-import com.chipman.littlebox.wanandroid.widget.PagingLoadFooterAdapter
+import com.chipman.littlebox.wanandroid.ui.home.item.HomeArticleItemBinder
+import com.chipman.littlebox.wanandroid.ui.home.item.HomeBannerItemBinder
+import com.chipman.model.wanandroid.Banner
 import com.chipman.model.wanandroid.HomeTabBean
+import com.chipman.multitype.PagingLoadStateAdapter
+import com.chipman.multitype.PagingMultiTypeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreViewModel>() {
-
-    private lateinit var mAdapter: UiModelAdapter
 
     companion object {
         fun newInstance(homeTabBean: HomeTabBean) = ExploreFragment().apply {
@@ -34,18 +36,22 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreViewModel>()
         }
     }
 
+    private val exploreAdapter =
+        PagingMultiTypeAdapter(ArticleDiffCalculator.getCommonDiffItemCallback()).apply {
+            register(HomeBannerItemBinder(this@ExploreFragment::onBannerItemClick))
+            register(HomeArticleItemBinder(this@ExploreFragment::onItemClick))
+        }
+
     override val mViewModel: ExploreViewModel by viewModels()
 
     override fun FragmentExploreBinding.initView(savedInstanceState: Bundle?) {
-        mAdapter = UiModelAdapter(this@ExploreFragment::onItemClick).apply {
-            addLoadStateListener(this@ExploreFragment::updateLoadStatus)
-        }
         with(exploreList) {
             layoutManager = LinearLayoutManager(context)
-            adapter = mAdapter.withLoadStateFooter(
-                PagingLoadFooterAdapter {
-                    mAdapter.retry()
-                }
+            adapter = exploreAdapter.withLoadStateFooter(
+                PagingLoadStateAdapter(
+                    SimpleFooterItemBinder(),
+                    exploreAdapter.types
+                )
             )
             setHasFixedSize(true)
         }
@@ -57,8 +63,12 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreViewModel>()
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     mViewModel.articlesFlow.collectLatest {
-                        Timber.d("articlesFlow: $it")
-                        mAdapter.submitData(it)
+                        exploreAdapter.submitData(it)
+                    }
+                }
+                launch {
+                    exploreAdapter.loadStateFlow.collectLatest {
+                        updateLoadStatus(it)
                     }
                 }
             }
@@ -69,10 +79,14 @@ class ExploreFragment : BaseFragment<FragmentExploreBinding, ExploreViewModel>()
 
     }
 
+    private fun onBannerItemClick(data: Banner, position: Int) {
+//        WebActivity.loadUrl(this.requireContext(), data.url)
+    }
+
     private fun updateLoadStatus(loadStates: CombinedLoadStates) {
         with(mBinding.loadingContainer) {
-            emptyLayout.isVisible = loadStates.refresh is LoadState.NotLoading && mAdapter.itemCount == 0
-            loadingProgress.isVisible = mAdapter.itemCount == 0 && loadStates.isRefreshing
+            emptyLayout.isVisible = loadStates.refresh is LoadState.NotLoading && exploreAdapter.itemCount == 0
+            loadingProgress.isVisible = exploreAdapter.itemCount == 0 && loadStates.isRefreshing
         }
     }
 }

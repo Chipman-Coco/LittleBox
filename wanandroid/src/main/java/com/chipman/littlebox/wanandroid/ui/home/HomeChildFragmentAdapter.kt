@@ -26,9 +26,9 @@ class HomeChildFragmentAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (items[position].title) {
             HOME_TAB_EXPLORE -> ExploreFragment.newInstance(items[position])
-            HOME_TAB_ANSWER -> AnswerFragment.newInstance()
-            HOME_TAB_SQUARE -> SquareFragment.newInstance()
-            else -> ExploreFragment.newInstance(items[position])
+            HOME_TAB_SQUARE -> SquareFragment.newInstance(items[position])
+            HOME_TAB_ANSWER -> AnswerFragment.newInstance(items[position])
+            else -> throw Throwable("Unknown fragment")
         }
     }
 }

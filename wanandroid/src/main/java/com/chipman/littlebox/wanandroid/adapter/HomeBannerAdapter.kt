@@ -10,7 +10,7 @@ import com.youth.banner.adapter.BannerAdapter
 
 class HomeBannerAdapter(
     items: List<Banner>,
-//    private val onClick: (Banner?, Int) -> Unit
+    private val onClick: (Banner, Int) -> Unit
 ) : BannerAdapter<Banner, HomeBannerAdapter.BannerItemViewHolder>(items) {
 
     class BannerItemViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -25,14 +25,14 @@ class HomeBannerAdapter(
         return BannerItemViewHolder(imageView)
     }
 
-    override fun onBindView(holder: BannerItemViewHolder?, data: Banner?, position: Int, size: Int) {
-        (holder?.view as? AppCompatImageView)?.apply {
+    override fun onBindView(holder: BannerItemViewHolder, data: Banner, position: Int, size: Int) {
+        (holder.view as? AppCompatImageView)?.apply {
             Glide.with(context)
-                .load(data?.imagePath)
+                .load(data.imagePath)
                 .into(this)
-//            setOnClickListener {
-//                onClick(data, position)
-//            }
+            setOnClickListener {
+                onClick(data, position)
+            }
         }
     }
 }

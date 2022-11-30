@@ -17,5 +17,5 @@ data class Series(
     val parentChapterId: Int,
     val userControlSetTop: Boolean,
     val visible: Int
-) : UiModel()
+)
 

@@ -65,6 +65,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":domain"))
+    implementation(project(":multitype"))
     implementation(project(":data"))
 
     implementation(DependencyConfig.Android.SwiperRefresh)

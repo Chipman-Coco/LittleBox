@@ -37,7 +37,7 @@ data class Article(
     var userId: Int,
     var visible: Int,
     var zan: Int
-) : UiModel() {
+) {
     /**
      * 获取文章作者
      */

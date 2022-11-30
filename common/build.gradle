@@ -39,8 +39,4 @@ dependencies {
 
     api(DependencyConfig.Github.Timber)
     api(DependencyConfig.Github.ToastUtil)
-
-    testImplementation(DependencyConfig.Android.TestExtJunit)
-    androidTestImplementation(DependencyConfig.Android.Junit)
-    androidTestImplementation(DependencyConfig.Android.TestEspressoCore)
 }

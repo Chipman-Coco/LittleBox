@@ -16,7 +16,7 @@ data class Banner(
 
 data class Banners(
     val banners: List<Banner>
-): UiModel() {
+) {
     override fun equals(other: Any?): Boolean {
         if (other is Banners) {
             if (this.banners.size == other.banners.size) {
