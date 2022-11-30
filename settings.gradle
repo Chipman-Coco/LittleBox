@@ -15,9 +15,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LittleBox"
 include ':wanandroid'
+//include ':eyepetizer'
 include ':common'
 include ':data'
 include ':model'
 include ':domain'
 include ':serve'
 include ':multitype'
+include ':eyepetizer'

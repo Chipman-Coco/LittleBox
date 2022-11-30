@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">eyepetizer</string>
+    <string name="home">首页</string>
+    <string name="community">社区</string>
+    <string name="notification">通知</string>
+    <string name="my">我的</string>
+    <string name="discover">发现</string>
+    <string name="recommend">推荐</string>
+    <string name="daily">日报</string>
+    <string name="empty_tips">暂无数据</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

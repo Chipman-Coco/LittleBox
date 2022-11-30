@@ -3,14 +3,14 @@ import com.chipman.buildsrc.*
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.dagger.hilt.android'
+// apply plugin: 'com.google.dagger.hilt.android'
 
 android {
-    namespace "com.chipman.littlebox.wanandroid"
+    namespace "com.chipman.littlebox.eyepetizer"
     compileSdk ProjectBuildConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.chipman.littlebox.wanandroid"
+        applicationId "com.chipman.littlebox.eyepetizer"
         minSdk ProjectBuildConfig.minSdkVersion
         targetSdk ProjectBuildConfig.targetSdkVersion
         versionCode ProjectBuildConfig.versionCode
@@ -44,19 +44,17 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all { output ->
             if (outputFileName != null && outputFileName.endsWith('.apk')) {
-                outputFileName = "WanAndroid" +
+                outputFileName = "Eyepetizer" +
                         "-${variant.buildType.name}" +
                         "-${ProjectBuildConfig.versionName}" +
                         ".apk"
             }
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -64,8 +62,6 @@ android {
 
 dependencies {
     implementation(project(":common"))
-    implementation(project(":domain"))
-    implementation(project(":multitype"))
     implementation(project(":data"))
 
     implementation(DependencyConfig.Android.SwiperRefresh)
@@ -74,16 +70,8 @@ dependencies {
     implementation(DependencyConfig.Prevalent.FlexBox)
     implementation(DependencyConfig.Prevalent.Lottie)
 
-    implementation(DependencyConfig.Jetpack.Hilt)
-    kapt(DependencyConfig.Jetpack.HiltAPT)
-
-    implementation(DependencyConfig.Github.DialogCore)
-    implementation(DependencyConfig.Github.DialogLifecycle)
-    implementation(DependencyConfig.Github.DialogBottomSheets)
-    // 手机号格式化
-    implementation(DependencyConfig.Github.PhoneTextWatcher)
-    // banner
-    implementation("io.github.youth5201314:banner:2.2.2")
+//    implementation(DependencyConfig.Jetpack.Hilt)
+//    kapt(DependencyConfig.Jetpack.HiltAPT)
 
     testImplementation(DependencyConfig.Android.TestExtJunit)
     androidTestImplementation(DependencyConfig.Android.Junit)
