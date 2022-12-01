@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.chipman.littlebox.eyepetizer.databinding.FragmentRefreshLayoutBinding
 import com.chipman.littlebox.eyepetizer.ui.main.home.HomeViewModel
+import timber.log.Timber
 
 /**
  * 首页-发现
@@ -31,7 +32,25 @@ class DiscoverFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
+        initData()
+    }
 
+    private fun initView() {
+        binding.apply {
+            swipeRefresh.setOnRefreshListener {
+                Timber.d("refresh")
+            }
+            with(recyclerView) {
+
+            }
+        }
+    }
+
+    private fun initData() {
+        homeViewModel.discovery.observe(viewLifecycleOwner) {
+
+        }
     }
 
     override fun onDestroy() {

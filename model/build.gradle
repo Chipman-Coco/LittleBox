@@ -11,4 +11,5 @@ dependencies {
     implementation(DependencyConfig.Kotlin.SerialJson)
     implementation(DependencyConfig.Jetpack.Hilt)
     kapt(DependencyConfig.Jetpack.HiltAPT)
+    implementation(DependencyConfig.Prevalent.Gson)
 }

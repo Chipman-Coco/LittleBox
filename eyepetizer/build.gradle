@@ -73,6 +73,9 @@ dependencies {
 //    implementation(DependencyConfig.Jetpack.Hilt)
 //    kapt(DependencyConfig.Jetpack.HiltAPT)
 
+    implementation 'com.github.zhpanvip:BannerViewPager:3.5.5'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     testImplementation(DependencyConfig.Android.TestExtJunit)
     androidTestImplementation(DependencyConfig.Android.Junit)
     androidTestImplementation(DependencyConfig.Android.TestEspressoCore)

@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-const val BASE_URL = "https://www.wanandroid.com"
+const val WAN_BASE_URL = "https://www.wanandroid.com"
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -33,7 +33,7 @@ object RetrofitModule {
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(client)
-            .baseUrl(BASE_URL)
+            .baseUrl(WAN_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
