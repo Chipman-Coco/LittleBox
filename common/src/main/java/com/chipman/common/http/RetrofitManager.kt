@@ -53,8 +53,8 @@ object RetrofitManager {
                 addQueryParameter("udid", GlobalUtil.getDeviceSerial())
                 //针对开眼官方【首页推荐 】api 变动， 需要单独做处理。原因：附加 vc、vn 这两个字段后，请求接口无响应。
                 if (!originalHttpUrl.toString().contains("api/v5/index/tab/allRec")) {
-                    addQueryParameter("vc", GlobalUtil.eyepetizerVersionCode.toString())
-                    addQueryParameter("vn", GlobalUtil.eyepetizerVersionName)
+                    addQueryParameter("vc", GlobalUtil.versionCode.toString())
+                    addQueryParameter("vn", GlobalUtil.versionName)
                 }
                 addQueryParameter("size", screenPixel())
                 addQueryParameter("deviceModel", GlobalUtil.deviceModel)

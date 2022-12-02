@@ -2,6 +2,7 @@ package com.chipman.common
 
 import android.app.Application
 import android.content.Context
+import com.chipman.common.util.SpUtil
 import com.hjq.toast.ToastUtils
 import timber.log.Timber
 
@@ -17,6 +18,7 @@ open class BaseApp : Application() {
 
         initToast()
         initTimber()
+        initMMKV()
     }
 
     override fun onTerminate() {
@@ -33,5 +35,10 @@ open class BaseApp : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    /** 初始化MMKV */
+    private fun initMMKV() {
+        SpUtil.initMMKV(appContext)
     }
 }

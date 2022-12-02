@@ -13,14 +13,9 @@ import timber.log.Timber
 import java.util.*
 
 /**
- * 应用程序全局的通用工具类，功能比较单一，经常被复用的功能，应该封装到此工具类当中，从而给全局代码提供方面的操作。
- *
- * @author guolin
- * @since 17/2/18
+ * 应用程序全局的通用工具类
  */
 object GlobalUtil {
-
-    private var TAG = "GlobalUtil"
 
     /**
      * 获取当前应用程序的包名。
@@ -56,17 +51,17 @@ object GlobalUtil {
         }
 
     /**
-     * 获取开眼应用程序的版本名。
+     * 获取应用程序的版本名。
      * @return 开眼当前应用程序的版本名。
      */
-    val eyepetizerVersionName: String
+    val versionName: String
         get() = "6.3.1"
 
     /**
-     * 获取开眼应用程序的版本号。
+     * 获取应用程序的版本号。
      * @return 开眼当前应用程序的版本号。
      */
-    val eyepetizerVersionCode: Long
+    val versionCode: Long
         get() = 6030012
 
     /**
