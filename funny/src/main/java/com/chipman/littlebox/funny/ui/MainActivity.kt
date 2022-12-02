@@ -13,7 +13,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun ActivityMainBinding.initView(savedInstanceState: Bundle?) {
 //        mViewModel.getAttentionList()
-        mViewModel.getCode()
+//        mViewModel.getCode()
+        mViewModel.getWeather()
     }
 
 }

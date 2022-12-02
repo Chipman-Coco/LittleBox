@@ -43,6 +43,8 @@ android {
             // 配置String常量，可以用BuildConfig类引用
             buildConfigField "String", "TOKEN", "\"${PROJECT_TOKEN}\""
             buildConfigField "String", "PHONE", "\"${PHONE}\""
+            buildConfigField "String", "APP_ID", "\"${APP_ID}\""
+            buildConfigField "String", "APP_SECRET", "\"${APP_SECRET}\""
             // 配置string资源，使用@string可以在manifest等文件中引用
             // resValue "string", "wxAppId", "${WX_APP_ID}"
         }
