@@ -1,6 +1,6 @@
 package com.chipman.littlebox.funny.http.converter
 
-import com.chipman.littlebox.funny.api.result.ApiResponse
+import com.chipman.littlebox.funny.data.result.ApiResponse
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import okhttp3.ResponseBody

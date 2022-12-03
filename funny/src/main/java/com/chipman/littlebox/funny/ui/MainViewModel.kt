@@ -1,14 +1,14 @@
 package com.chipman.littlebox.funny.ui
 
 import com.chipman.littlebox.funny.BuildConfig
-import com.chipman.littlebox.funny.api.HomeService
-import com.chipman.littlebox.funny.api.UserService
-import com.chipman.littlebox.funny.api.WeatherService
-import com.chipman.littlebox.funny.api.result.getOrNull
 import com.chipman.littlebox.funny.base.BaseViewModel
 import com.chipman.littlebox.funny.data.Constant
+import com.chipman.littlebox.funny.data.result.getOrNull
 import com.chipman.littlebox.funny.http.RetrofitManager
-import com.chipman.littlebox.funny.util.ktx.launch
+import com.chipman.littlebox.funny.service.HomeService
+import com.chipman.littlebox.funny.service.UserService
+import com.chipman.littlebox.funny.service.WeatherService
+import com.chipman.littlebox.funny.util.ktx.launchMain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
 import javax.inject.Inject
@@ -28,21 +28,21 @@ class MainViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun getAttentionList() {
-        launch {
+        launchMain {
             val list = homeService.getAttentionList(0).getOrNull()
             Timber.d("list: $list")
         }
     }
 
     fun getCode() {
-        launch {
+        launchMain {
             val resp = userService.getCode(BuildConfig.PHONE).getOrNull()
             Timber.d("loginPsw: $resp")
         }
     }
 
     fun getWeather() {
-        launch {
+        launchMain {
             val resp = weatherService.getCurrentWeather("深圳市")
             Timber.d("weather: $resp")
         }

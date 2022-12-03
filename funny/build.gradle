@@ -5,6 +5,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -83,13 +84,11 @@ dependencies {
     implementation(DependencyConfig.Android.Material)
     implementation(DependencyConfig.Android.CoreKtx)
     implementation(DependencyConfig.Android.SwiperRefresh)
-    testImplementation(DependencyConfig.Android.TestExtJunit)
-    androidTestImplementation(DependencyConfig.Android.Junit)
-    androidTestImplementation(DependencyConfig.Android.TestEspressoCore)
 
     implementation(DependencyConfig.Kotlin.Kotlin)
     implementation(DependencyConfig.Kotlin.CoroutinesCore)
     implementation(DependencyConfig.Kotlin.CoroutinesAndroid)
+    implementation(DependencyConfig.Kotlin.SerialJson)
 
     implementation(DependencyConfig.Jetpack.ViewModel)
     implementation(DependencyConfig.Jetpack.ViewModelSavedState)
@@ -97,6 +96,7 @@ dependencies {
     implementation(DependencyConfig.Jetpack.Lifecycle)
     implementation(DependencyConfig.Jetpack.Hilt)
     kapt(DependencyConfig.Jetpack.HiltAPT)
+    implementation(DependencyConfig.Jetpack.Paging3)
 
     implementation(DependencyConfig.Prevalent.Okhttp)
     implementation(DependencyConfig.Prevalent.OkHttpInterceptorLogging)
@@ -113,4 +113,8 @@ dependencies {
     implementation(DependencyConfig.Github.DialogCore)
     implementation(DependencyConfig.Github.DialogLifecycle)
     implementation(DependencyConfig.Github.DialogBottomSheets)
+
+    testImplementation(DependencyConfig.Android.TestExtJunit)
+    androidTestImplementation(DependencyConfig.Android.Junit)
+    androidTestImplementation(DependencyConfig.Android.TestEspressoCore)
 }
