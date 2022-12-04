@@ -41,6 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         if (savedInstanceState == null) {
             switchFragment(0)
         }
+        changeMessageDot(9)
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -51,7 +52,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         fragmentList = fragmentList.map {
-            supportFragmentManager.findFragmentByTag(it.javaClass.simpleName) as? BaseFragment<*, *> ?: it
+            supportFragmentManager.findFragmentByTag(it.javaClass.simpleName) as? BaseFragment<*, *>
+                ?: it
         }
         switchFragment(savedInstanceState.getInt(KEY_CURRENT_FRAGMENT_INDEX))
     }
@@ -87,10 +89,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             else -> 0
         }
 
-    private fun changeMessageDot(isShown: Boolean) {
+    private fun changeMessageDot(number: Int) {
         mBinding.bottomNavi.getOrCreateBadge(R.id.bottom_navi_4).also { badge ->
+            badge.number = number
+            badge.maxCharacterCount = 3
             badge.backgroundColor = getColor(R.color.material_red_A700)
-            badge.isVisible = isShown
+            badge.isVisible = number > 0
         }
     }
 }

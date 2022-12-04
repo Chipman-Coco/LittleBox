@@ -25,7 +25,7 @@ data class Joke(
 )
 
 /**
- * 段子。。
+ * 段子社交信息
  */
 data class JokeInfo(
     val commentNum: Int,        //评论数
