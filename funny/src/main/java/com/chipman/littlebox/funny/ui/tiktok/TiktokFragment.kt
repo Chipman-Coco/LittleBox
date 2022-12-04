@@ -16,4 +16,7 @@ class TiktokFragment : BaseFragment<FragmentTiktokBinding, EmptyViewModel>() {
 
     }
 
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
 }

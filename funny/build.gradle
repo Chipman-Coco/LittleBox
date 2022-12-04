@@ -109,6 +109,7 @@ dependencies {
     implementation(DependencyConfig.Prevalent.Lottie)
 
     implementation(DependencyConfig.Github.Timber)
+    implementation(DependencyConfig.Github.Util)
     implementation(DependencyConfig.Github.ToastUtil)
     implementation(DependencyConfig.Github.DialogCore)
     implementation(DependencyConfig.Github.DialogLifecycle)

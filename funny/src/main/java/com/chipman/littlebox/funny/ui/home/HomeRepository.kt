@@ -12,7 +12,7 @@ import javax.inject.Inject
  */
 class HomeRepository @Inject constructor(private val service: HomeService) {
 
-    suspend fun getRecommendList(pageSize: Int) =
+    fun getRecommendList(pageSize: Int) =
         Pager(
             PagingConfig(
                 pageSize = pageSize,

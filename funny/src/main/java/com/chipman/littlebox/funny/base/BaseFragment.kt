@@ -18,6 +18,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
     abstract fun VB.initView(savedInstanceState: Bundle?)
 
+    abstract fun initData()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _mBinding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
         return mBinding.root
@@ -26,6 +28,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mBinding.initView(savedInstanceState)
+        initData()
     }
 
     override fun onDestroyView() {

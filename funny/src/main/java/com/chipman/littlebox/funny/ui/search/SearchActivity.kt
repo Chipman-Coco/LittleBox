@@ -13,4 +13,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, EmptyViewModel>() {
     override fun ActivitySearchBinding.initView(savedInstanceState: Bundle?) {
 
     }
+
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
 }

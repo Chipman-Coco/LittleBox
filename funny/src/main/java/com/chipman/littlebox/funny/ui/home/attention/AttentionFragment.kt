@@ -17,6 +17,10 @@ class AttentionFragment : BaseFragment<FragmentAttentionBinding, EmptyViewModel>
 
     }
 
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(tabBean: HomeTabBean) =

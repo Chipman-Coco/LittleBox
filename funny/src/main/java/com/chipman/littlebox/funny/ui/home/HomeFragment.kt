@@ -35,6 +35,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }.attach()
     }
 
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
+
     private fun generateHomeTabs() = listOf(
         HomeTabBean(HomeChildFragmentAdapter.HOME_TAB_1),
         HomeTabBean(HomeChildFragmentAdapter.HOME_TAB_2),

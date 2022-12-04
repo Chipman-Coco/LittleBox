@@ -44,6 +44,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         changeMessageDot(9)
     }
 
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
+
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         outState.putInt(KEY_CURRENT_FRAGMENT_INDEX, curFragmentIndex)
         super.onSaveInstanceState(outState, outPersistentState)

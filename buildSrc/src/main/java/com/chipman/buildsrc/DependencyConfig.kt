@@ -103,7 +103,7 @@ object DependencyConfig {
         const val Retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
         const val RetrofitConverterGson = "com.squareup.retrofit2:converter-gson:2.9.0"                     // Java Gson序列化
         const val RetrofitConverterScalars = "com.squareup.retrofit2:converter-scalars:2.9.0"
-        const val RetrofitConverterMoshi = "com.squareup.retrofit2:converter-moshi:2.9.0"                 // Kotlin Gson序列化
+        const val RetrofitConverterMoshi = "com.squareup.retrofit2:converter-moshi:2.9.0"                   // Kotlin Gson序列化
 
         private const val ijk_version = "0.8.8"
         const val IjkPlayer_java = "tv.danmaku.ijk.media:ijkplayer-java:$ijk_version"                       // ijk player
@@ -112,6 +112,7 @@ object DependencyConfig {
         const val IjkPlayer_x86_64 = "tv.danmaku.ijk.media:ijkplayer-x86_64:$ijk_version"
 
         const val FlexBox = "com.google.android.flexbox:flexbox:3.0.0"
+        const val Fresco = "com.facebook.fresco:fresco:2.6.0"                                               // 图片加载
     }
 
     /**
@@ -125,8 +126,6 @@ object DependencyConfig {
         const val DialogLifecycle = "com.afollestad.material-dialogs:lifecycle:3.3.0"                       // Dialog
         const val DialogCore = "com.afollestad.material-dialogs:core:3.3.0"
         const val DialogBottomSheets = "com.afollestad.material-dialogs:bottomsheets:3.3.0"
-
-        const val Fresco = "com.facebook.fresco:fresco:2.6.0"                                               // 图片加载
 
         const val GSYPlayer = "com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-java:v8.3.3-release-jitpack"
         const val GSYExoPlayer = "com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer-exo2:v8.3.3-release-jitpack"
@@ -151,8 +150,10 @@ object DependencyConfig {
         const val Timber = "com.jakewharton.timber:timber:5.0.1"                                            // 日志输出
         const val ToastUtil = "com.github.getActivity:ToastUtils:10.5"                                      // Tost 工具
 
-        const val XUI = "com.github.xuexiangjys:XUI:1.1.9"                                                // UI 框架
-        const val XPopup = "com.github.li-xiaojun:XPopup:2.8.11"                                          // Popup Window
+        const val Util = "com.blankj:utilcodex:1.31.1"                                                      // Util
+
+        const val XUI = "com.github.xuexiangjys:XUI:1.1.9"                                                  // UI 框架
+        const val XPopup = "com.github.li-xiaojun:XPopup:2.8.11"                                            // Popup Window
 
         const val ZXingLite = "com.github.jenly1314:zxing-lite:2.2.0"                                       // 二维码识别
     }
@@ -163,7 +164,7 @@ object DependencyConfig {
      */
     object SDK {
         const val Wechat = "com.tencent.mm.opensdk:wechat-sdk-android:6.8.0"                                // 微信
-        const val AliPay = "com.alipay.sdk:alipaysdk-android:15.8.11"                                    // 支付宝
+        const val AliPay = "com.alipay.sdk:alipaysdk-android:15.8.11"                                       // 支付宝
         const val AMap3D = "com.amap.api:3dmap:7.6.0"                                                       // 3D 地图
         const val AMapLocation = "com.amap.api:location:5.2.0"                                              // 定位
 

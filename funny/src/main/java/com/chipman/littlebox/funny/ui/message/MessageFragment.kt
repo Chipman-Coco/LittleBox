@@ -16,4 +16,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding, EmptyViewModel>() {
 
     }
 
+    override fun initData() {
+        // TODO("Not yet implemented")
+    }
 }
