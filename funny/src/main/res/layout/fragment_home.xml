@@ -6,17 +6,17 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:background="?colorSurface"
-        app:layout_constraintEnd_toStartOf="@+id/bt_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabGravity="start"
+        app:tabGravity="center"
         app:tabIndicator="@null"
-        app:tabMaxWidth="50dp"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/material_orange_700"
+        app:tabMode="fixed"
+        app:tabPaddingStart="8dp"
+        app:tabRippleColor="@null"
         app:tabTextAppearance="@style/TabLayout.TextAppearance" />
 
     <ImageButton
@@ -31,7 +31,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/material_grey_300"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

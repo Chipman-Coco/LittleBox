@@ -2,7 +2,6 @@ package com.chipman.littlebox.funny.util
 
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.EncryptUtils
-import timber.log.Timber
 
 /**
  * 图片、视频 URL处理
@@ -15,10 +14,13 @@ object AESUtil {
     private const val KEY = "cretinzp**273846"
 
     fun decrypt(url: String): String {
-        val byteUrl = url.replaceFirst("ftp://", "").toByteArray()
-        val decryptByte = EncryptUtils.decryptBase64AES(byteUrl, KEY.toByteArray(), "AES/ECB/PKCS5Padding", null)
-        val decryptResult = ConvertUtils.bytes2String(decryptByte)
-//        Timber.d("decryptResult: $decryptResult")
-        return decryptResult
+        try {
+            val byteUrl = url.replaceFirst("ftp://", "").toByteArray()
+            val decryptByte = EncryptUtils.decryptBase64AES(byteUrl, KEY.toByteArray(), "AES/ECB/PKCS5Padding", null)
+            return ConvertUtils.bytes2String(decryptByte)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return ""
     }
 }

@@ -5,15 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.joke.JokeFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <com.chipman.littlebox.funny.widget.NoInterceptTouchSwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.chipman.littlebox.funny.widget.NestedRecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+    </com.chipman.littlebox.funny.widget.NoInterceptTouchSwipeRefreshLayout>
 
+    <include
+        android:id="@+id/loadingContainer"
+        layout="@layout/container_loading_layout" />
 </FrameLayout>

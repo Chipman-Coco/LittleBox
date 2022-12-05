@@ -3,12 +3,14 @@ package com.chipman.littlebox.funny.ui.home.joke
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chipman.littlebox.funny.R
 import com.chipman.littlebox.funny.base.BaseFragment
 import com.chipman.littlebox.funny.databinding.FragmentJokeBinding
 import com.chipman.littlebox.funny.ui.home.HomeFragment
 import com.chipman.littlebox.funny.ui.home.HomeTabBean
 import com.chipman.littlebox.funny.ui.home.HomeViewModel
 import com.chipman.littlebox.funny.util.ktx.launchRepeatOnStarted
+import com.chipman.littlebox.funny.widget.RecyclerLinearDivider
 import com.chipman.multitype.PagingMultiTypeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -27,10 +29,18 @@ class JokeFragment : BaseFragment<FragmentJokeBinding, HomeViewModel>() {
     override fun FragmentJokeBinding.initView(savedInstanceState: Bundle?) {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
+            addItemDecoration(
+                RecyclerLinearDivider.Builder(context)
+                    .setDivider(R.drawable.item_shape_divider)
+                    .create()
+            )
             adapter = jokeAdapter/*.withLoadStateFooter(
                 PagingLoadStateAdapter()
             )*/
             setHasFixedSize(true)
+        }
+        with(swipeRefreshLayout) {
+
         }
         initData()
     }

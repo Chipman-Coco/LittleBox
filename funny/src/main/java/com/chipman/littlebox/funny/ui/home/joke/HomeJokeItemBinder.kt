@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chipman.littlebox.funny.R
 import com.chipman.littlebox.funny.databinding.ItemJokeCommonLayoutBinding
 import com.chipman.littlebox.funny.service.model.JokeInfo
@@ -17,8 +18,6 @@ import com.chipman.littlebox.funny.util.AESUtil
 import com.chipman.multitype.PagingItemViewBinder
 import com.hjq.toast.ToastUtils
 import timber.log.Timber
-import java.net.URL
-import java.net.URLDecoder
 
 /**
  * [ViewBinding] ViewHolder
@@ -86,22 +85,29 @@ class HomeJokeItemBinder(
             user.content.text = item.joke.content
             when (item.joke.type) {
                 1 -> {
-//                    user.image.isVisible = false
+                    user.image.also {
+                        it.isVisible = false
+                        it.setImageDrawable(null)
+                    }
                 }
                 2 -> {
                     user.image.also {
                         it.isVisible = true
                         val decryptResult = AESUtil.decrypt(item.joke.imageUrl)
-                        Timber.d("decryptResult: $decryptResult")
-//                        val imageArray = decryptResult.replace(",", "")
-//                        Timber.d("imageArray: $imageArray")
+                        val imageArray = decryptResult.replace(",", "")
+                        Timber.d("decryptResult: $decryptResult，imageArray: $imageArray")
+//                        it.tag = decryptResult
                         Glide.with(it.context)
                             .load(decryptResult/*imageArray.last()*/)
+                            .transform(RoundedCorners(10))
                             .into(it)
                     }
                 }
                 else -> {
-
+                    user.image.also {
+                        it.isVisible = false
+                        it.setImageDrawable(null)
+                    }
                 }
             }
         }
