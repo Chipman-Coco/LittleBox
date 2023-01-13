@@ -1,0 +1,14 @@
+import com.chipman.buildsrc.DependencyConfig
+
+apply from: '../config.gradle'
+
+android {
+    namespace "com.chipman.player"
+}
+
+dependencies {
+    implementation(project(":common"))
+
+    implementation(DependencyConfig.Jetpack.Hilt)
+    kapt(DependencyConfig.Jetpack.HiltAPT)
+}

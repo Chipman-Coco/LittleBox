@@ -17,7 +17,7 @@
             android:overScrollMode="never" />
     </com.chipman.littlebox.funny.widget.NoInterceptTouchSwipeRefreshLayout>
 
-    <include
+    <!--<include
         android:id="@+id/loadingContainer"
-        layout="@layout/container_loading_layout" />
+        layout="@layout/container_loading_layout" />-->
 </FrameLayout>
