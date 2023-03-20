@@ -1,4 +1,5 @@
-import com.chipman.buildsrc.*
+import com.chipman.buildsrc.DependencyConfig
+import com.chipman.buildsrc.ProjectBuildConfig
 
 plugins {
     id 'com.android.application'
@@ -76,6 +77,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation(project(":multitype"))
+
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
     implementation(DependencyConfig.Android.AppCompat)
     implementation(DependencyConfig.Android.ConstraintLayout)
