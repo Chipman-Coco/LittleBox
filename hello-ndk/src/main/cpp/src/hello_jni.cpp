@@ -2,13 +2,13 @@
 #include "../include/hello_jni.h"
 #include <string>
 #include <android/log.h>
-#include <assert.h>
+#include <cassert>
 
-static const char *TAG = "NativeLib";
+static const char *TAG = "HelloJni";
 #define LOGD(fmt, args...) __android_log_print(ANDROID_LOG_DEBUG, TAG, fmt, ##args)
 #define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, TAG, fmt, ##args)
 
-#define JNI_CLASS_NAME "com/example/myndkdemo/HelloJni"
+#define JNI_CLASS_NAME "com/example/demo/jni/HelloJni"
 
 #include "../include/ffmpeg/libavcodec/version.h"
 #include "../include/ffmpeg/libavcodec/avcodec.h"
@@ -16,8 +16,6 @@ static const char *TAG = "NativeLib";
 #include "../include/ffmpeg/libavutil/version.h"
 #include "../include/ffmpeg/libswscale/version.h"
 #include "../include/ffmpeg/libavfilter/version.h"
-
-extern "C" {
 
 jstring getFfmpegVersion(JNIEnv *env, jobject obj) {
     char strBuffer[1024 * 4] = {0};
@@ -41,11 +39,6 @@ jstring getFfmpegVersion(JNIEnv *env, jobject obj) {
     return env->NewStringUTF(strBuffer);
 }
 
-jstring stringFromJNI(JNIEnv *env, jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
-}
-
 /**
  * 调用Java成员变量
  * @param env
@@ -54,58 +47,73 @@ jstring stringFromJNI(JNIEnv *env, jobject /* this */) {
  * @param fieldName
  */
 void callJavaField(JNIEnv *env, jobject obj, jstring className, jstring fieldName) {
-    jboolean isCopy;
-    const char *name = env->GetStringUTFChars(fieldName, &isCopy);
-    LOGD("invoke method: %s", name);
-    const char *classNameStr = env->GetStringUTFChars(className, &isCopy);
+    jboolean iscopy;
+    const char *name = env->GetStringUTFChars(fieldName, &iscopy);
+    LOGD("invoke method:%s", name);
+    const char *classNameStr = env->GetStringUTFChars(className, &iscopy);
     jclass c = env->FindClass(classNameStr);
+    //读取类的构造函数
     jmethodID constructMethod = env->GetMethodID(c, "<init>", "()V");
-    jobject o = env->NewObject(c, constructMethod);
+    //根据构造函数创建一个Object对象
+    jobject objCallBack = env->NewObject(c, constructMethod);
 
-    jboolean isCopy2;
-    const char *_fieldName = env->GetStringUTFChars(fieldName, &isCopy2);
-    //如果传入一个找不到的字段会报错
+    jboolean isCopy;
+    const char *_fieldName = env->GetStringUTFChars(fieldName, &isCopy);
+
+    jfieldID field_Name = env->GetFieldID(c, _fieldName, "Ljava/lang/String;");
+
+    /*native层处理*/
+    /*检测是否有异常*/
     jboolean hasException = env->ExceptionCheck();
-    if (hasException) {
-        env->ExceptionDescribe(); //打印异常
-        env->ExceptionClear(); //清除当前异常
+    if (hasException == JNI_TRUE) {
+        //打印异常，同Java中的printExceptionStack;
+        env->ExceptionDescribe();
+        env->ExceptionClear();
 
+        //抛出异常给上面，让Java层去捕获
+        jclass noFieldClass = env->FindClass("java/lang/Exception");
+        std::string msg(_fieldName);
+        std::string header = "无效字段";
+        env->ThrowNew(noFieldClass, header.append(msg).c_str());
+        env->ReleaseStringUTFChars(fieldName, _fieldName);
+        return;
     }
-
-    jfieldID stringFieldId = env->GetFieldID(c, _fieldName, "Ljava/lang/String;");
-    jstring stringFiledValue = static_cast<jstring>(env->GetObjectField(o, stringFieldId));
-    const char *filedChar = env->GetStringUTFChars(stringFiledValue, &isCopy);
-    LOGD("Java field value: %s", filedChar);
-    env->ReleaseStringUTFChars(stringFiledValue, filedChar);
+    jstring fieldObj = static_cast<jstring>(env->GetObjectField(objCallBack, field_Name));
+    const char *fieldC = env->GetStringUTFChars(fieldObj, &isCopy);
+    LOGD("字段%s值:%s", _fieldName, fieldC);
+    env->ReleaseStringUTFChars(fieldObj, fieldC);
 }
 
-jboolean callJavaMethod(JNIEnv *env, jobject obj, jstring className, jstring methodName) {
+jboolean callJavaMethod(JNIEnv *env, jobject obj1, jstring className, jstring methodName) {
     jboolean isCopy;
     const char *classNameStr = env->GetStringUTFChars(className, &isCopy);
-    jclass clzz = env->FindClass(classNameStr);
-    jmethodID constructMethodId = env->GetMethodID(clzz, "<init>", "()V");
-    jobject obj2 = env->NewObject(clzz, constructMethodId);
+    jclass callbackClass = env->FindClass(classNameStr);
+    //获取构造函数
+    jmethodID constructMethod = env->GetMethodID(callbackClass, "<init>", "()V");
+    jobject objCallBack = env->NewObject(callbackClass, constructMethod);
 
     const char *_methodName = env->GetStringUTFChars(methodName, &isCopy);
-    jmethodID _jmethodId = env->GetMethodID(clzz, _methodName, "(Ljava/lang/String;)V");
-    const char *str = "test";
+    jmethodID _jmethodName = env->GetMethodID(callbackClass, _methodName, "(Ljava/lang/String;)V");
+    const char *str = "123";
     jstring result = env->NewStringUTF(str);
-    env->CallVoidMethod(obj2, _jmethodId, result);
+    env->CallVoidMethod(objCallBack, _jmethodName, result);
 
     if (env->ExceptionCheck()) {
         env->ExceptionDescribe();
         env->ExceptionClear();
     }
+    //释放字符串内存
     env->ReleaseStringUTFChars(methodName, _methodName);
     env->ReleaseStringUTFChars(className, classNameStr);
+    return JNI_TRUE;
 }
 
 /**
  * JNI方法
  */
 static JNINativeMethod methods[] = {
-        {"stringFromJNI",    "()Ljava/lang/String;", (void *) stringFromJNI},
-        {"getFfmpegVersion", "()Ljava/lang/String;", (void *) getFfmpegVersion}
+        {"callJavaField",  "(Ljava/lang/String;Ljava/lang/String;)V", (void *) callJavaField},
+        {"callJavaMethod", "(Ljava/lang/String;Ljava/lang/String;)Z", (void *) callJavaMethod},
 };
 
 /**
@@ -145,14 +153,4 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return JNI_ERR;
     }
     return JNI_VERSION_1_6;
-}
-
-/*
-JNIEXPORT jstring JNICALL
-Java_com_example_myndkdemo_MainActivity_stringFromJNI(JNIEnv *env, jobject) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
-}
-*/
-
 }

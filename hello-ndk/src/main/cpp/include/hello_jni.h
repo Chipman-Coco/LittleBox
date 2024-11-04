@@ -1,12 +1,16 @@
-//
-// Created by chaipeng on 2024/5/16.
-//
+#ifndef HELLO_JNI_H
+#define HELLO_JNI_H
 
-#ifndef MYNDKDEMO_HELLO_JNI_H
-#define MYNDKDEMO_HELLO_JNI_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#define JNI_TRUE true
-#define JNI_FALSE false
+    void callJavaField(JNIEnv *env, jobject obj, jstring className, jstring fieldName);
 
+    jboolean callJavaMethod(JNIEnv *env, jobject obj, jstring className, jstring methodName);
 
-#endif //MYNDKDEMO_HELLO_JNI_H
+#ifdef __cplusplus
+};
+#endif
+
+#endif

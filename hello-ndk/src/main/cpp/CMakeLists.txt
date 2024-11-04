@@ -9,10 +9,9 @@ cmake_minimum_required(VERSION 3.22.1)
 # Since this is the top level CMakeLists.txt, the project name is also accessible
 # with ${CMAKE_PROJECT_NAME} (both CMake variables are in-sync within the top level
 # build script scope).
-project("helloNdk")
+project("native-lib")
 
 set(ffmpeg ${CMAKE_SOURCE_DIR}/ffmpeg)
-
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Creates and names a library, sets it as either STATIC
@@ -30,12 +29,27 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 # used in the AndroidManifest.xml file.
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        src/hello_jni.cpp)
+        native-lib.cpp)
+
+# 将第三方库作为动态库引用
+add_library(helloJni-lib
+        SHARED
+        IMPORTED
+)
+# 指定第三方库的绝对路径
+set_target_properties(helloJni-lib PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI}/libhelloJni.so
+)
+# 设置第三方库的include文件夹
+target_include_directories(helloJni-lib INTERFACE
+        ${CMAKE_SOURCE_DIR}/include
+)
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
 # build script, prebuilt third-party libraries, or Android system libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
         # List libraries link to the target library
+        helloJni-lib
         android
         log)
